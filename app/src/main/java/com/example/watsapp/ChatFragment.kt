@@ -4,11 +4,13 @@ import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.watsapp.databinding.FragmentChatBinding
@@ -29,6 +31,18 @@ class ChatFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.tvName.setOnClickListener {
+            val phoneNumber = PhoneNumber("imageUrl", "name", "number")
+            Log.d("name","${phoneNumber}")
+            findNavController().navigate(R.id.detailFragment, bundleOf("model" to phoneNumber))
+        }
+        if (arguments != null) {
+            val model = arguments?.getSerializable("model") as PhoneNumber
+            binding.apply {
+                tvName.text = model.name
+            }
+        }
+
         binding.rvChat.setLayoutManager(
             GridLayoutManager(requireContext(), 1, LinearLayoutManager.VERTICAL, false)
         )
@@ -77,5 +91,8 @@ class ChatFragment : Fragment() {
         } else {
             binding.btnChat.setBackgroundColor(Color.GRAY)
         }
+    }
+    private fun onClick(model: PhoneNumber) {
+
     }
 }
