@@ -34,7 +34,7 @@ class ChatFragment : Fragment() {
         binding.tvName.setOnClickListener {
             val phoneNumber = PhoneNumber("imageUrl", "name", "number")
             Log.d("name","${phoneNumber}")
-            findNavController().navigate(R.id.detailFragment, bundleOf("model" to phoneNumber))
+            findNavController().navigate(R.id.action_chatFragment_to_detailFragment, bundleOf("model" to phoneNumber))
         }
         if (arguments != null) {
             val model = arguments?.getSerializable("model") as PhoneNumber
@@ -89,7 +89,7 @@ class ChatFragment : Fragment() {
         if (titleText.isNotEmpty()) {
             binding.btnChat.setBackgroundColor(Color.GREEN)
         } else {
-            binding.btnChat.setBackgroundColor(Color.GRAY)
+            binding.btnChat.setBackgroundColor(Color.BLUE)
         }
     }
     private fun onClick(model: PhoneNumber) {

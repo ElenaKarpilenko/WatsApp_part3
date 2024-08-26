@@ -27,10 +27,13 @@ class ContactsFragment() : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
         loadData()
+
+
     }
 
     private fun initAdapter() {
         binding.rvContacts.adapter = ContactAdapter(contacts,this::onClick)
+
     }
 
     fun loadData() {
@@ -148,7 +151,7 @@ class ContactsFragment() : Fragment() {
         )
     }
     private fun onClick(model: PhoneNumber) {
-        findNavController().navigate(R.id.chatFragment, bundleOf("model" to model))
+        findNavController().navigate(R.id.action_contactsFragment_to_chatFragment, bundleOf("model" to model))
     }
 
 }

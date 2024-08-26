@@ -11,8 +11,7 @@
         android:id="@+id/img_datail"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:background="@drawable/bg_et"
-        android:src="@mipmap/ic_launcher"
+        android:background="@mipmap/ic_launcher"
         android:layout_marginTop="20dp"
         app:civ_border_width="4dp"
         app:civ_border_color="#FF000000"
@@ -36,7 +35,7 @@
     <TextView
         android:id="@+id/tv_datail_number"
         android:layout_marginTop="10dp"
-        tools:text="Number"
+        android:text="number"
         android:textStyle="italic"
         android:textSize="24sp"
         android:layout_width="wrap_content"
